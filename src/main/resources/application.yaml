@@ -7,7 +7,7 @@ spring:
 #  datasource:
 #    url: jdbc:postgresql://localhost:5432/satdb
 #    username: satuser
-#    password: satpass
+#    password:
 #    jpa:
 #      hibernate:
 #        ddl-auto: validate
