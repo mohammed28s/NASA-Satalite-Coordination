@@ -12,6 +12,7 @@ import java.time.Instant;
 import java.util.List;
 
 
+@CrossOrigin(origins = "http://localhost:4200") // Allows Angular to connect
 @RestController
 @RequestMapping("/api/v1/satellites")
 @RequiredArgsConstructor
