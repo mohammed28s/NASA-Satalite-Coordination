@@ -20,13 +20,13 @@ public class SatelliteController {
     private final TleRecordRepository tleRepo;
     private final PropagationService propagationService;
 
-    @GetMapping
+    @GetMapping("/fetch")   // fetching all Satellite Data
     public List<Satellite> list() { return satelliteRepo.findAll(); }
 
-    @PostMapping
+    @PostMapping("/create") // Create a new Satellite Data
     public Satellite create(@RequestBody Satellite s) { return satelliteRepo.save(s); }
 
-    @GetMapping("/{id}/position")
+    @GetMapping("/{id}/position") // Getting Specific Satellite Data by id
     public PropagationService.PositionDto position(@PathVariable Long id, @RequestParam(required = false) String at) {
         Satellite sat = satelliteRepo.findById(id).orElseThrow();
         TleRecord latest = tleRepo.findFirstBySatelliteOrderByEpochDesc(sat).orElseThrow();
