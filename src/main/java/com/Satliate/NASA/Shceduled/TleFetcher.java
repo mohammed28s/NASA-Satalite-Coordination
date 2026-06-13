@@ -5,7 +5,6 @@ import com.Satliate.NASA.Entity.Satellite;
 import com.Satliate.NASA.Entity.TleRecord;
 import com.Satliate.NASA.Repostiory.SatelliteRepository;
 import com.Satliate.NASA.Repostiory.TleRecordRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -13,11 +12,15 @@ import org.springframework.web.reactive.function.client.WebClient;
 import java.time.OffsetDateTime;
 
 @Service
-@RequiredArgsConstructor
 public class TleFetcher {
     private final WebClient webClient = WebClient.create();
     private final SatelliteRepository satelliteRepo;
     private final TleRecordRepository tleRepo;
+
+    public TleFetcher(SatelliteRepository satelliteRepo, TleRecordRepository tleRepo) {
+        this.satelliteRepo = satelliteRepo;
+        this.tleRepo = tleRepo;
+    }
 
     @Scheduled(cron = "${app.tle.fetch-cron}", zone = "${app.tle.timezone}")
     public void fetch() {
@@ -26,7 +29,7 @@ public class TleFetcher {
         if (body == null || body.isBlank()) return;
 
         String[] lines = body.split("\\r?\\n");
-        for (int i = 0; i + 2 <= lines.length; i += 3) {
+        for (int i = 0; i + 2 < lines.length; i += 3) {
             String name = lines[i].trim();
             String l1 = lines[i+1].trim();
             String l2 = lines[i+2].trim();

@@ -1,4 +1,6 @@
 spring:
+  main:
+    web-application-type: servlet
   application:
     name: NASA-real-time-Satliate-Data
   datasource:
@@ -17,6 +19,9 @@ spring:
     console:
       enabled: true
       path: /h2-console
+      settings:
+        web-allow-others: true
+        trace: true
 
 app:
   tle:
