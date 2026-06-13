@@ -19,7 +19,7 @@
 
 ## 🌟 Overview
 
-**NASA Satellite Coordination** is a comprehensive Java application designed to manage satellite coordination, tracking, and communication operations. This system provides efficient tools for monitoring satellite status, coordinating mission parameters, and ensuring reliable space communications.
+**NASA Satellite Coordination** is a comprehensive Java application designed to manage satellite coordination, tracking, and communication operations. This system provides efficient tools for monitoring, managing, and coordinating satellite missions with precision and reliability.
 
 ---
 
