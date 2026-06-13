@@ -3,3 +3,6 @@
 *.java text eol=lf linguist-language=Java
 *.xml text eol=lf
 *.gradle text eol=lf
+# Exclude vendored Orekit data from language detection
+src/main/resources/orekit-data/** linguist-vendored
+*.py linguist-vendored
