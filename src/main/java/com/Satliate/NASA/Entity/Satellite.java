@@ -29,6 +29,9 @@ public class Satellite {
     private Instant createdAt;
     private Instant updatedAt;
 
+    private String line1;
+    private String line2;
+
     @PrePersist
     void onCreate() { createdAt = Instant.now(); updatedAt = createdAt; }
 
