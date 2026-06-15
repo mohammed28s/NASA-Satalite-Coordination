@@ -7,6 +7,7 @@ import lombok.Data;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -20,7 +21,8 @@ public class Satellite {
 
     private String name;
     private String manufacturer;
-    private LocalDate launchDate;
+    private LocalDateTime launchDate;
+    private LocalDateTime decayDate;
     private Double massKg;
 
     @Lob
