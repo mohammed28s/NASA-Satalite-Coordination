@@ -6,14 +6,15 @@ package com.Satliate.NASA.Controller;
 
 import com.Satliate.NASA.DTO.SatcatDto;
 import com.Satliate.NASA.Entity.Satellite;
+import com.Satliate.NASA.Expection.SpaceTrackException;
 import com.Satliate.NASA.Repostiory.SatelliteRepository;
 import com.Satliate.NASA.Service.PropagationService;
+import com.Satliate.NASA.Service.SpaceTrackAuthService;
 import com.Satliate.NASA.Service.SpaceTrackService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.orekit.bodies.GeodeticPoint;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -24,13 +25,28 @@ public class SatelliteController {
     private final SpaceTrackService spaceTrackService;
     private final SatelliteRepository satelliteRepository;
     private final PropagationService propagationService;
+    private final SpaceTrackAuthService authService;
 
     public SatelliteController(SpaceTrackService spaceTrackService,
                                SatelliteRepository satelliteRepository,
-                               PropagationService propagationService) {
+                               PropagationService propagationService,
+                               SpaceTrackAuthService authService) {
         this.spaceTrackService = spaceTrackService;
         this.satelliteRepository = satelliteRepository;
         this.propagationService = propagationService;
+        this.authService = authService;
+    }
+
+    // ✅ Login first
+    @Operation(summary = "Login to Space-Track")
+    @PostMapping("/login")
+    public String login(@RequestParam String username, @RequestParam String password) {
+        try {
+            authService.login(username, password);
+            return "Login successful!";
+        } catch (SpaceTrackException ex) {
+            throw ex; // handled by GlobalExceptionHandler
+        }
     }
 
     @Operation(summary = "List all active satellites")
@@ -58,4 +74,6 @@ public class SatelliteController {
                 .orElseThrow(() -> new RuntimeException("Satellite not found in DB"));
         return propagationService.propagate(sat);
     }
+
+
 }

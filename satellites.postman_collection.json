@@ -1,0 +1,66 @@
+{
+  "info": {
+    "name": "Satellite API Tests",
+    "_postman_id": "12345-67890-abcdef",
+    "description": "Collection to test Satellite REST endpoints",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get Active Satellites",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/satellites/active",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["satellites", "active"]
+        }
+      }
+    },
+    {
+      "name": "Get Inactive Satellites",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/satellites/inactive",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["satellites", "inactive"]
+        }
+      }
+    },
+    {
+      "name": "Get Satellite Metadata by NORAD ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/satellites/25544",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["satellites", "25544"]
+        }
+      }
+    },
+    {
+      "name": "Get Satellite Position by NORAD ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/satellites/25544/position",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["satellites", "25544", "position"]
+        }
+      }
+    }
+  ]
+}
