@@ -16,6 +16,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.orekit.bodies.GeodeticPoint;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/satellites")
@@ -36,6 +37,8 @@ public class SatelliteController {
         this.propagationService = propagationService;
         this.authService = authService;
     }
+
+    Logger log = Logger.getLogger(SatelliteController.class.getName());
 
     // ✅ Login first
     @Operation(summary = "Login to Space-Track")
