@@ -1,51 +1,51 @@
-spring:
-  main:
-    web-application-type: servlet
-  application:
-    name: NASA-real-time-Satliate-Data
-  datasource:
-    url: jdbc:h2:mem:satdb;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
-  jpa:
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        jdbc:
-          time_zone: UTC
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-      settings:
-        web-allow-others: true
-        trace: true
-
-app:
-  nasa:
-    api-key: ${NASA_API_KEY:DEMO_KEY}
-  tle:
-    fetch-cron: "0 0/15 * * * *"
-    timezone: "Asia/Muscat"
-    sources:
-      - https://celestrak.com/NORAD/elements/gp.php?GROUP=active
-
-server:
-  port: 8080
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info
-
-
-
-
+#spring:
+#  main:
+#    web-application-type: servlet
+#  application:
+#    name: NASA-real-time-Satliate-Data
+#  datasource:
+#    url: jdbc:h2:mem:satdb;DB_CLOSE_DELAY=-1;MODE=PostgreSQL
+#    driver-class-name: org.h2.Driver
+#    username: sa
+#    password:
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    properties:
+#      hibernate:
+#        jdbc:
+#          time_zone: UTC
+#  h2:
+#    console:
+#      enabled: true
+#      path: /h2-console
+#      settings:
+#        web-allow-others: true
+#        trace: true
+#
+#app:
+#  nasa:
+#    api-key: ${NASA_API_KEY:DEMO_KEY}
+#  tle:
+#    fetch-cron: "0 0/15 * * * *"
+#    timezone: "Asia/Muscat"
+#    sources:
+#      - https://celestrak.com/NORAD/elements/gp.php?GROUP=active
+#
+#server:
+#  port: 8080
+#
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: health,info
+#
+#
+#
+#
 # Dev Database
-
+#
 #  datasource:
 #    url: jdbc:postgresql://localhost:5432/satdb
 #    username: satuser
@@ -64,5 +64,5 @@ management:
 #      timezone: "Asia/Muscat"
 #      sources:
 #        - https://celestrak.com/NORAD/elements/gp.php?GROUP=active
-
-
+#
+#
