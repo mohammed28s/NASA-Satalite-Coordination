@@ -24,6 +24,8 @@ spring:
         trace: true
 
 app:
+  nasa:
+    api-key: ${NASA_API_KEY:DEMO_KEY}
   tle:
     fetch-cron: "0 0/15 * * * *"
     timezone: "Asia/Muscat"
