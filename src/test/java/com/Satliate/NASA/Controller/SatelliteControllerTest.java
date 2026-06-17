@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -21,6 +22,18 @@ class SatelliteControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
+
+    @MockitoBean
+    private com.Satliate.NASA.Service.SpaceTrackService spaceTrackService;
+
+    @MockitoBean
+    private com.Satliate.NASA.Service.PropagationService propagationService;
+
+    @MockitoBean
+    private com.Satliate.NASA.Service.SpaceTrackAuthService authService;
+
+    @MockitoBean
+    private com.Satliate.NASA.Service.SatelliteSyncService satelliteSyncService;
 
     @Autowired
     private SatelliteRepository satelliteRepo;
@@ -47,7 +60,7 @@ class SatelliteControllerTest {
         mockMvc.perform(post("/api/v1/satellites/create")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(json))
-                .andExpect(status().isOk())
+                .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.name").value("TEST-SAT"));
     }
 
